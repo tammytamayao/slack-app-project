@@ -1,0 +1,14 @@
+
+.channelBtn {
+    border: none;
+    background-color: white;
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    padding-top: 5px;
+}
+
+.ChannelIcon {
+    width: 20px;
+    height: 20px;
+}
