@@ -12,3 +12,16 @@
     width: 20px;
     height: 20px;
 }
+
+.showmember-ul {
+    margin: 0;
+    padding: 0;
+}
+
+.showmember-li {
+    list-style: none;
+}
+
+.channel-title-Header {
+    cursor: pointer;
+}

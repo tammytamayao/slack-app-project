@@ -29,6 +29,7 @@ const SideBar = () =>{
 
   const [isChannelLoading, setIsChannelLoading] = useState(false);
   const [isDMLoading, setIsDMLoading] = useState(false);
+
   const headers = useContext(UserContextHeader);
 
   const prevchannelsList=JSON.parse(localStorage.getItem('channelsList')) || [];
@@ -43,8 +44,15 @@ const SideBar = () =>{
   const DC = () => {
     navigate('/DashboardChannel');
   }
+
   const getAllChannels =()=> {
-    setIsChannelLoading(true);
+    if (isChannelLoading===false) {
+      setIsChannelLoading(true);
+      console.log(isChannelLoading);
+    } else {
+      setIsChannelLoading(false);
+      console.log(isChannelLoading);
+    }
 
     let requestAllMyChannels = {
       method: 'GET',
@@ -71,18 +79,18 @@ const SideBar = () =>{
                   });
               setChannelsList(updatedList);
               localStorage.setItem('channelsList',JSON.stringify(result.data));
-              setIsChannelLoading(false);
           })
           .catch((error) => console.log('error', error));
   }
 
-  /*const params = useParams();
-  const [channelDetails, setChannelDetails] = useState([]);
-  const prevChannelMembers = JSON.parse(localStorage.getItem('channelMembers')) || [];
-  const [channelMembers,setChannelMembers]=useState(prevChannelMembers);*/
-
   const getAllDMs =()=> {
-    setIsDMLoading(true);
+    if (isDMLoading===false) {
+      setIsDMLoading(true);
+      console.log(isDMLoading);
+    } else {
+      setIsDMLoading(false);
+      console.log(isDMLoading);
+    }
 
     let requestAllDMs = {
       method: 'GET',
@@ -108,7 +116,6 @@ const SideBar = () =>{
       });
       setDMList(updatedList);
       localStorage.setItem('DMList',JSON.stringify(result.data));
-      setIsDMLoading(false);
   })
   .catch((error) => console.log('error', error));
   }
@@ -133,14 +140,16 @@ const SideBar = () =>{
 
     <div className='sidebar-bottom-container'>
       <div className='sidebar-bottom'>
+        <span>
         <span><img src={Triangle} className="sidebar-bottom-Icon" alt="sidebarIcon"/></span>
         <span><span className='sidebar-bottom-caption' onClick={getAllChannels}>Channels</span></span>
+        </span>
         <span className='Icon-optionhidden'>
         <span ><img src={Options} className="sidebarIcon-option" alt="sidebarIcon"/></span>
         <span><img src={Plus} className="sidebarIcon-plus" alt="sidebarIcon" onClick={DC}/></span>
         </span>
       </div>
-      {isChannelLoading ? (null): (
+      {isChannelLoading==false ? (null): (
         <ScrollBars horizontal autoHide={false} style={scrollBarStyle}>
       <ul className='sidebar-list'>
       {channelsList.map((item, index) => (
@@ -156,14 +165,16 @@ const SideBar = () =>{
       )}
 
       <div className='sidebar-bottom'>
+        <span>
         <span><img src={Triangle} className="sidebar-bottom-Icon" alt="sidebarIcon"/></span>
         <span className='sidebar-bottom-caption' onClick={getAllDMs}><span>Direct Messages</span></span>
+        </span>
         <span className='Icon-optionhidden'>
         <span><img src={Options} className="sidebarIcon-option" alt="sidebarIcon"/></span>
         <span><img src={Plus} className="sidebarIcon-plus" alt="sidebarIcon" onClick={DDM}/></span>
         </span> 
       </div>
-     {isDMLoading ? (null): (
+     {isDMLoading==false ? (null): (
       <ScrollBars horizontal autoHide={false} style={scrollBarStyle}>
      <ul className='sidebar-list'>
       {DMList.map((item, index) => (

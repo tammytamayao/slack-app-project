@@ -13,19 +13,14 @@ import {UserSetting} from './Modal/UserModal';
 
 function Header () {
     const navigate=useNavigate();
-    const prevIsUserSettingActive = JSON.parse(localStorage.getItem('isUserSettingActive'));
-    const [isUserSettingActive,setUserSettingActive]=useState(prevIsUserSettingActive);
+    const [isUserSettingActive,setUserSettingActive]=useState(false);
 
     const modal=document.getElementById('userSettingModal');
     const handleUserSetting = () => {
         if (isUserSettingActive===false) {
           setUserSettingActive(true);
-          localStorage.setItem('isUserSettingActive',JSON.stringify(isUserSettingActive));
-          console.log(isUserSettingActive);
         } else {
             setUserSettingActive(false);
-            localStorage.setItem('isUserSettingActive',JSON.stringify(isUserSettingActive));
-            console.log(isUserSettingActive);
         }
         //localStorage.clear();
         //navigate('/');
@@ -41,7 +36,7 @@ function Header () {
             <span><img src={UserImg} className="userimgIcon" alt="sidebarIcon" onClick={handleUserSetting}/></span>
         <div id='userSettingModal'>
 
-        {isUserSettingActive===false ? <div><UserSetting/></div> : null}
+        {isUserSettingActive===true ? <div><UserSetting/></div> : null}
         </div>
         </div>
     );

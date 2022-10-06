@@ -32,44 +32,45 @@ export const LoginUser = () => {
             const response = await client.post('/auth/sign_in', payload);
             localStorage.setItem('userHeader',JSON.stringify(response.headers));
             localStorage.setItem('userInfo',JSON.stringify(payload));
-            localStorage.setItem('isUserSettingActive',JSON.stringify(false));
             if(response.request.status===200 && isLoading===false) {
                 localStorage.setItem('isUserActive',JSON.stringify(false));
                 localStorage.setItem('loginStatus',JSON.stringify(response.request.status));
                 console.log('Successfully Logged In');
 
 //Get Users List
-        let requestOptions = {
-            method: 'GET',
-            headers: headers,
-            redirect: 'follow',
-        };
-
-        fetch(`${baseURL}/users`, requestOptions)
-            .then((response) => response.json())
-            .then((result) => {
-                result.data.forEach((item) => {
-                    userList.push({
-                        name: item.name,
-                        id: item.id,
-                        uid: item.uid,
+        if(headers !== {}) {
+            let requestOptions = {
+                method: 'GET',
+                headers: headers,
+                redirect: 'follow',
+            };
+    
+            fetch(`${baseURL}/users`, requestOptions)
+                .then((response) => response.json())
+                .then((result) => {
+                    result.data.forEach((item) => {
+                        userList.push({
+                            name: item.name,
+                            id: item.id,
+                            uid: item.uid,
+                        });
                     });
-                });
-                setUserList(result.data);
-                localStorage.setItem('userList',JSON.stringify(userList));
-                setIsLoading(false);
-            navigate('/DashboardDM');
-            window.location.reload();
-            })
-            .catch((error) => console.log('error', error));
+                    setUserList(result.data);
+                    localStorage.setItem('userList',JSON.stringify(userList));
+                    setIsLoading(false);
+                navigate('/DashboardDM');
+                window.location.reload();
+                })
+                .catch((error) => console.log('error', error));
         }
+            }
         }
         catch (error) {
             console.log(error.response.data.errors);
             setIsLoading(false);
             setLogInMsg(error.response.data);
         }
-    };
+    }
     
     return (
     <div className="login-container-container">

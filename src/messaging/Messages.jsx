@@ -12,7 +12,7 @@ export const Messages = (userID, receiverClass) => {
     const scrollBarStyle = {
         border: "none",
         width: '99%',
-        height: '350px',
+        height: '400px',
       };
 
     const contextHeader = useContext(UserContextHeader);

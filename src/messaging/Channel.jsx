@@ -41,7 +41,6 @@ export const Channel = () => {
     const channelsList=JSON.parse(localStorage.getItem('channelsList'));
     const channelIndex=channelsList.findIndex(event => event.id==params.userID);
     
-    
     const submitHandler = async (evt) => {
         evt.preventDefault();
         try {
@@ -88,15 +87,26 @@ export const Channel = () => {
         
         }
 
+
     const modal=document.getElementById('addMemberModal');
+    const showMember=document.getElementById('showMemberModal');
+
+
+    const showMemberModal = () => {
+        showMember.style.display = "block";
+        const getMembers = JSON.parse(localStorage.getItem('channelMembers'));
+    }
 
     const AddUserBtn = () => {
         modal.style.display = "block";
-        console.log(channelMembers);
     }
 
     const closeModalBtn = () => {
         modal.style.display = "none";
+        
+    }
+    const closeShowMemberBtn = () => {
+        showMember.style.display = "none";
     }
 
     return (
@@ -108,14 +118,13 @@ export const Channel = () => {
         <div className="DM-title-container">
             <span className="DM-title">
                 <span>
-                    <span># {channelsList[channelIndex].name}</span>
-                    <span>{ /*members*/}</span>
+                    <span className="channel-title-Header" onClick={showMemberModal}># {channelsList[channelIndex].name}</span>
                 </span>
             <button className="channelBtn" onClick={AddUserBtn}><img src={AddUser} className="ChannelIcon" alt="MsgIcon"/></button>
             </span>
         </div>
 
-
+            <div> {Messages(params.userID, receiverClass)}</div>
              <form action="" onSubmit={evt => submitHandler(evt)} className="MsgInput-container-container-container" >
                         <div className="MsgInput-container-container">
                         <div className="MsgInput-container">
@@ -134,20 +143,21 @@ export const Channel = () => {
                             <div className="MsgIcon-bottom-container">
                                 <div className="MsgIcon-bottom">
                                 <span>
-                                <img src={Plus} className="MsgIcon" alt="MsgIcon"/>
-                                <img src={Vid} className="MsgIcon" alt="MsgIcon"/>
-                                <img src={Mic} className="MsgIcon" alt="MsgIcon"/>
-                                <img src={Share} className="MsgIcon" alt="MsgIcon"/>
-                                <img src={At} className="MsgIcon" alt="MsgIcon"/>
+                                    <img src={Plus} className="MsgIcon" alt="MsgIcon"/>
+                                    <img src={Vid} className="MsgIcon" alt="MsgIcon"/>
+                                    <img src={Mic} className="MsgIcon" alt="MsgIcon"/>
+                                    <img src={Share} className="MsgIcon" alt="MsgIcon"/>
+                                    <img src={At} className="MsgIcon" alt="MsgIcon"/>
                                 </span>
-                                <button className="MsgButton"><img src={Plane} className="MsgIcon" alt="MsgIcon"/></button>
-                                <span className="Arrow" ><img src={Arrow} className="MsgIcon" alt="MsgIcon"/></span>
+                                <span>
+                                    <button className="MsgButton"><img src={Plane} className="MsgIcon" alt="MsgIcon"/></button>
+                                    <span className="Arrow" ><img src={Arrow} className="MsgIcon" alt="MsgIcon"/></span>
+                                </span>
                                 </div>
                             </div>
                         </div>
                         </div>
                     </form>
-            {Messages(params.userID, receiverClass)}
         </div>
 
         {/* Modal */}
@@ -166,6 +176,22 @@ export const Channel = () => {
             </div>
             </div>
         </div>
+        </div>
+    </div>
+
+    <div id="showMemberModal" className="modal">
+        <div className="addMember-modal-content">
+            <div className="form-container">
+            <span className="form-title"><label>Members (UID):</label></span>
+            <ul className="showmember-ul">
+            {channelMembers.map((item, index) => (
+        <li  className="showmember-li" key={index}>
+          <span>{item.user_id}</span>
+        </li>
+      ))}
+            </ul>
+            <div className="showMember-btn-container"><span className="closeMember-btn"><button onClick={closeShowMemberBtn}>Close</button></span></div>
+            </div>
         </div>
     </div>
 

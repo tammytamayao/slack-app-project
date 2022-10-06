@@ -71,7 +71,7 @@ export const Messaging = () => {
                         <span className="receiver-header-container"><span>{userList[receiverIndex].uid}</span></span>
                     </span>
                 </div>
-                    <div>{Messages(params.userID, receiverClass)}</div>
+                <div>{Messages(params.userID, receiverClass)}</div>
                     <form action="" onSubmit={evt => submitHandler(evt)} className="MsgInput-container-container-container" >
                         <div className="MsgInput-container-container">
                         <div className="MsgInput-container">
@@ -96,8 +96,10 @@ export const Messaging = () => {
                                 <img src={Share} className="MsgIcon" alt="MsgIcon"/>
                                 <img src={At} className="MsgIcon" alt="MsgIcon"/>
                                 </span>
+                                <div>
                                 <button className="MsgButton"><img src={Plane} className="MsgIcon" alt="MsgIcon"/></button>
                                 <span className="Arrow" ><img src={Arrow} className="MsgIcon" alt="MsgIcon"/></span>
+                                </div>
                                 </div>
                             </div>
                         </div>

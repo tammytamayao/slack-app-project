@@ -1,5 +1,8 @@
 .Messaging-container {
-    width: 80%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 5px 0px;
 }
 
 .MsgIcon {
@@ -10,7 +13,7 @@
 }
 
 #MsgInput {
-    height: 30px;
+    height: 40px;
     width: 97%;
     padding: 5px;;
     font-size: 12pt;
@@ -18,12 +21,11 @@
     border: none;
 }
 .MsgInput-container-container-container {
-    padding-left: 15px;
+    padding: 20px 10px 15px 10px;
 }
+
 .MsgInput-container-container {
-    position: absolute;
-    bottom: 15px;
-    width: 77%;
+    width: 100%;
     display: flex;
     justify-content: space-around;
 }
@@ -44,6 +46,7 @@
 .MsgIcon-bottom {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     padding: 5px;
 }
 
@@ -51,14 +54,12 @@
    border: none;
    position: relative;
    background-color: white;
-   left:750px
 }
 
 .Arrow{
     border: none;
     position: relative;
     background-color: white;
-    left:740px
 }
 
 .conversation-container-container{
