@@ -1,10 +1,9 @@
-import { React, useState,useEffect,useContext } from "react";
+import { React, useState} from "react";
 import { useNavigate } from "react-router-dom";
 import UserImg from '../Asset/UserImg.png';
 import './DM-Header.css';
 
 function ChannelHeader() {
-const navigate=useNavigate();
 
 const [inputText, setInputText] = useState("");
 let inputHandler = (e) => {

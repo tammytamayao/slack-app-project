@@ -1,4 +1,4 @@
-import {useEffect, useState, useContext} from "react";
+import {useEffect,useState, useContext} from "react";
 import {client} from "../../config/AxiosConfig";
 import { useNavigate } from "react-router-dom";
 import loader from '../Asset/Ellipsis.svg';
@@ -8,6 +8,7 @@ import apple from '../Asset/apple-logo.png';
 import {UserContextHeader} from '../../context/HeaderContext';
 import {baseURL} from "../../config/AxiosConfig";
 import './LoginUser.css'
+import { logRoles } from "@testing-library/react";
 
 export const LoginUser = () => {
 
@@ -21,8 +22,7 @@ export const LoginUser = () => {
     const prevUserList=JSON.parse(localStorage.getItem('userList')) || [];
     const [userList,setUserList]=useState(prevUserList);
     
-    const login = async (evt) => {
-        evt.preventDefault();
+    const login = async () => {
         setIsLoading(true);
         
     const payload = {email: email, password: password};
@@ -36,41 +36,43 @@ export const LoginUser = () => {
                 localStorage.setItem('isUserActive',JSON.stringify(false));
                 localStorage.setItem('loginStatus',JSON.stringify(response.request.status));
                 console.log('Successfully Logged In');
-
-//Get Users List
-        if(headers !== {}) {
-            let requestOptions = {
-                method: 'GET',
-                headers: headers,
-                redirect: 'follow',
-            };
-    
-            fetch(`${baseURL}/users`, requestOptions)
-                .then((response) => response.json())
-                .then((result) => {
-                    result.data.forEach((item) => {
-                        userList.push({
-                            name: item.name,
-                            id: item.id,
-                            uid: item.uid,
-                        });
-                    });
-                    setUserList(result.data);
-                    localStorage.setItem('userList',JSON.stringify(userList));
-                    setIsLoading(false);
-                navigate('/DashboardDM');
                 window.location.reload();
-                })
-                .catch((error) => console.log('error', error));
-        }
             }
         }
         catch (error) {
-            console.log(error.response.data.errors);
+            console.log(error);
             setIsLoading(false);
-            setLogInMsg(error.response.data);
+            setLogInMsg(error);
         }
     }
+
+//Get Users List
+       const getUserList = async () => {
+        const response = await fetch(`${baseURL}/users`,  {
+            method: 'GET',
+            headers: {...headers}
+        });
+    
+        if(response.status === 200) {
+            const result = await response.json();
+            result.data.forEach((item) => {
+                userList.push({
+                    name: item.name,
+                    id: item.id,
+                    uid: item.uid,
+                });
+            });
+            setUserList(result.data);
+            localStorage.setItem('userList',JSON.stringify(userList));
+            navigate('/DashboardDM');
+        }
+    }
+
+    useEffect(() => {
+        login();
+        getUserList();
+    }, [headers]);
+
     
     return (
     <div className="login-container-container">
