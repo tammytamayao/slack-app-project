@@ -1,5 +1,4 @@
 import {baseURL} from "../../config/AxiosConfig";
-// baseURL = "http://206.189.91.54/api/v1/" just to make things shorter :)
 import {useState} from "react";
 
 export const CreateUserWithFetch = () => {

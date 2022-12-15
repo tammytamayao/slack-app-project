@@ -1,6 +1,6 @@
 import {useState} from "react";
-import {useLocation, useParams} from "react-router-dom";
-import {baseURL, client} from "../config/AxiosConfig";
+import {useParams} from "react-router-dom";
+import {client} from "../config/AxiosConfig";
 import {useContext} from "react";
 import {UserContextHeader} from "../context/HeaderContext";
 import {Messages} from "./Messages";
@@ -33,7 +33,7 @@ export const Messaging = () => {
     const params = useParams()
     const receiverClass = "User";
     
-     //For testing and checking
+//For testing and checking
      console.log(`Params: ${params.userID}`)
      console.log(`Receiver Class: ${receiverClass}`)
     

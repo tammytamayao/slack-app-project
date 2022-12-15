@@ -8,7 +8,6 @@ import apple from '../Asset/apple-logo.png';
 import {UserContextHeader} from '../../context/HeaderContext';
 import {baseURL} from "../../config/AxiosConfig";
 import './LoginUser.css'
-import { logRoles } from "@testing-library/react";
 
 export const LoginUser = () => {
 
@@ -47,7 +46,7 @@ export const LoginUser = () => {
     }
 
 //Get Users List
-       const getUserList = async () => {
+    const getUserList = async () => {
         const response = await fetch(`${baseURL}/users`,  {
             method: 'GET',
             headers: {...headers}

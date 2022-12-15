@@ -1,7 +1,7 @@
-import {useEffect, useState, useContext} from "react";
+import {useState, useContext} from "react";
 import {Messages} from "./Messages";
 import {useParams} from "react-router-dom";
-import {UserContextHeader, UserContextInfo} from "../context/HeaderContext";
+import {UserContextHeader} from "../context/HeaderContext";
 import {client} from "../config/AxiosConfig";
 import Header from "../components/Header/Header";
 import SideBar from "../components/Sidebar/SideBar";
