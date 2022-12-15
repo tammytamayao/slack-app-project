@@ -25,13 +25,11 @@ export const CreateUserWithFetch = () => {
             })
             console.log(await response.json())
             setUserDetails(await response.json());
-            // console.log(userDetails.data)
         } catch (error) {
             console.log(error.message)
         }
     }
     console.log(email, password, passwordConfirmation)
-    // console.log(`Email: ${userDetails.data.email}`)
     
     return (
         <div>

@@ -1,6 +1,4 @@
-import {client} from "../config/AxiosConfig";
 import {useState, useContext} from "react";
-import {useNavigate} from "react-router-dom";
 import {UserContextHeader} from "../context/HeaderContext";
 import {baseURL} from "../config/AxiosConfig";
 import Plus from '../components/Asset/Plus.svg';
@@ -8,7 +6,6 @@ import './Channel.css';
 
 
 export const CreateChannel = () => {
-    const navigate = useNavigate();
     const headers = useContext(UserContextHeader);
 
     const prevChannelsList=JSON.parse(localStorage.getItem('channelsList')) || [];
@@ -17,7 +14,6 @@ export const CreateChannel = () => {
     const [newChannel, setNewChannel] = useState([]);
     const [channelName,setChannelName]=useState("");
     const [newChannelSuccess, setNewChannelSuccess]=useState(false);
-    const [channelId,setChannelId]=useState("");
 
     const createNewChannel = (e) => {
         e.preventDefault();

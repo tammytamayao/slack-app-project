@@ -21,13 +21,13 @@ export const LoginUser = () => {
     const headers = useContext(UserContextHeader);
     const prevUserList=JSON.parse(localStorage.getItem('userList')) || [];
     const [userList,setUserList]=useState(prevUserList);
-    
+
+//Authenticate Log in
     const login = async () => {
         setIsLoading(true);
         
     const payload = {email: email, password: password};
 
-//Authenticate Log in
         try {
             const response = await client.post('/auth/sign_in', payload);
             localStorage.setItem('userHeader',JSON.stringify(response.headers));

@@ -3,8 +3,8 @@ import {Messages} from "./Messages";
 import {useParams} from "react-router-dom";
 import {UserContextHeader, UserContextInfo} from "../context/HeaderContext";
 import {client} from "../config/AxiosConfig";
-import Header from "../components/Header";
-import SideBar from "../components/SideBar";
+import Header from "../components/Header/Header";
+import SideBar from "../components/Sidebar/SideBar";
 import Bold from '../components/Asset/Bold.svg';
 import Italic from '../components/Asset/Italic.svg';
 import Underline from '../components/Asset/Underline.svg';
@@ -26,7 +26,6 @@ import './Channel.css';
 
 export const Channel = () => {
     const headers = useContext(UserContextHeader);
-    const [channelDetails, setChannelDetails] = useState([])
     
     const [message, setMessage] = useState("");
 
@@ -35,8 +34,6 @@ export const Channel = () => {
 
     const prevChannelMembers = JSON.parse(localStorage.getItem('channelMembers')) || [];
     const [channelMembers,setChannelMembers]=useState(prevChannelMembers);
-    const prevMemberCount= JSON.parse(localStorage.getItem('memberCount')) || [];
-    const [memberCount,setMemberCount] =useState(prevMemberCount);
 
     const channelsList=JSON.parse(localStorage.getItem('channelsList'));
     const channelIndex=channelsList.findIndex(event => event.id==params.userID);
@@ -87,10 +84,8 @@ export const Channel = () => {
         
         }
 
-
     const modal=document.getElementById('addMemberModal');
     const showMember=document.getElementById('showMemberModal');
-
 
     const showMemberModal = () => {
         showMember.style.display = "block";
@@ -160,7 +155,7 @@ export const Channel = () => {
                     </form>
         </div>
 
-        {/* Modal */}
+{/* Modal */}
 
     <div id="addMemberModal" className="modal">
         <div className="addMember-modal-content">
@@ -195,7 +190,7 @@ export const Channel = () => {
         </div>
     </div>
 
-    {/*End of Modal*/}
+{/*End of Modal*/}
 
         </div>
     </div>

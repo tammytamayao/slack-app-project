@@ -1,13 +1,11 @@
 import './App.css';
-import {BrowserRouter, Route, Router, Routes} from "react-router-dom";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {CreateUser} from "./components/Register/CreateUser";
 import {LoginUser} from "./components/Login/LoginUser";
 import Provider from './context/HeaderContext';
 import {Channel} from './messaging/Channel';
-import ChatDM from './components/Chat/ChatDM';
-import ChatChannel from './components/Chat/ChatChannel';
-import DashboardDM from './components/DashboardDM';
-import DashboardChannel from './components/DashboardChannel';
+import DashboardDM from './components/Dashboard/DashboardDM';
+import DashboardChannel from './components/Dashboard/DashboardChannel';
 import { UserSetting } from './components/Modal/UserModal';
 import {Messaging} from "./messaging/Messaging";
 import {CreateChannel} from "./messaging/CreateChannel";
@@ -22,7 +20,6 @@ function App() {
                         <Route path={"/LoginUser"} element={<LoginUser />} />
                         <Route path={"/"} element={<CreateUser />} />
                         <Route path={"/Channel"} element={<Channel/>}/>
-                        <Route path={"/ChatChannel"} element={<ChatChannel/>}/>
                         <Route path={"/DashboardDM"} element={<DashboardDM/>}/>
                         <Route path={"/UserSetting"} element={<UserSetting/>}/>
                         <Route path={"/Messaging/:userID"} element={<Messaging/>}/>

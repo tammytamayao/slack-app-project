@@ -1,21 +1,19 @@
 import {React,useState,useContext, useEffect} from 'react';
 import ScrollBars from 'react-scrollbar';
-//import {useParams} from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
-import DM from '../components/Asset/DM.svg';
-import Threads from '../components/Asset/Threads.svg';
-import At from '../components/Asset/At.svg';
-import Draft from '../components/Asset/Draft.svg';
-import ArrowDown from '../components/Asset/ArrowDown.svg';
-import WriteMsg from '../components/Asset/WriteMsg.svg';
-import BookMark from '../components/Asset/BookMark.svg';
-import Triangle from '../components/Asset/Triangle.svg';
-import Options from '../components/Asset/Options.svg';
-import Plus from '../components/Asset/Plus.svg';
-//import {client} from "../config/AxiosConfig";
+import DM from '../../components/Asset/DM.svg';
+import Threads from '../../components/Asset/Threads.svg';
+import At from '../../components/Asset/At.svg';
+import Draft from '../../components/Asset/Draft.svg';
+import ArrowDown from '../../components/Asset/ArrowDown.svg';
+import WriteMsg from '../../components/Asset/WriteMsg.svg';
+import BookMark from '../../components/Asset/BookMark.svg';
+import Triangle from '../../components/Asset/Triangle.svg';
+import Options from '../../components/Asset/Options.svg';
+import Plus from '../../components/Asset/Plus.svg';
 
-import {UserContextHeader} from '../context/HeaderContext';
-import {baseURL} from "../config/AxiosConfig";
+import {UserContextHeader} from '../../context/HeaderContext';
+import {baseURL} from "../../config/AxiosConfig";
 
 import './SideBar.css';
 

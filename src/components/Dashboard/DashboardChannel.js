@@ -1,10 +1,7 @@
 import React from "react";
-import UserModal from "./Modal/UserModal";
-import DMHeader from "./DirectMessage/DM-Header";
-import Header from "./Header";
-import SideBar from "./SideBar";
-import ChannelHeader from "./DirectMessage/Channel-Header";
-import { CreateChannel } from "../messaging/CreateChannel";
+import Header from "../Header/Header";
+import SideBar from "../Sidebar/SideBar";
+import { CreateChannel } from "../../messaging/CreateChannel";
 
 function DashboardChannel () {
     return (
