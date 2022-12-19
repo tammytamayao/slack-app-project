@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import UserImg from '../Asset/UserImg.png';
 import { useNavigate } from 'react-router';
 import './modal.css'
