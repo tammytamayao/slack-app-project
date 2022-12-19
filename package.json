@@ -1,4 +1,10 @@
 {
+  "engines": {
+    "npm": ">=8.7.0"
+  },
+  "overrides": {
+    "react": "$react"
+  },
   "name": "slack-app-project",
   "version": "0.1.0",
   "private": true,
