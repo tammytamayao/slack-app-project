@@ -45,6 +45,34 @@ export const LoginUser = () => {
             setLogInMsg(error);
         }
     }
+
+//Get Users List
+    const getUserList = async () => {
+        const response = await fetch(`${baseURL}/users`,  {
+            method: 'GET',
+            headers: {...headers}
+        });
+    
+        if(response.status === 200) {
+            const result = await response.json();
+            result.data.forEach((item) => {
+                userList.push({
+                    name: item.name,
+                    id: item.id,
+                    uid: item.uid,
+                });
+            });
+            setUserList(result.data);
+            localStorage.setItem('userList',JSON.stringify(userList));
+            navigate('/DashboardDM');
+        }
+    }
+
+    useEffect(() => {
+        login();
+        getUserList();
+    }, [headers]);
+
     
     return (
     <div className="login-container-container">
