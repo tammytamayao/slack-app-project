@@ -1,10 +1,4 @@
 {
-  "engines": {
-    "npm": ">=8.7.0"
-  },
-  "overrides": {
-    "react": "$react"
-  },
   "name": "slack-app-project",
   "version": "0.1.0",
   "private": true,
@@ -21,7 +15,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "NODE_ENV=production node_modules/react-scripts/bin/react-scripts.js start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
