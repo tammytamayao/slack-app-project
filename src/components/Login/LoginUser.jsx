@@ -78,6 +78,7 @@ export const LoginUser = () => {
 }
 
     useEffect(() => {
+        login();
         getUserList();
     }, [headers]);
 
