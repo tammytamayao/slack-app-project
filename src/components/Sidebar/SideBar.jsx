@@ -19,12 +19,6 @@ import './SideBar.css';
 
 const SideBar = () =>{
 
-  const scrollBarStyle = {
-    border: "none",
-    width: '99%',
-    height: '120px',
-  };
-
   const [isChannelLoading, setIsChannelLoading] = useState(false);
   const [isDMLoading, setIsDMLoading] = useState(false);
 
@@ -148,7 +142,6 @@ const SideBar = () =>{
         </span>
       </div>
       {isChannelLoading==false ? (null): (
-        <ScrollBars horizontal autoHide={false} style={scrollBarStyle}>
       <ul className='sidebar-list'>
       {channelsList.map((item, index) => (
         <li key={index} onClick={ () => {
@@ -159,7 +152,6 @@ const SideBar = () =>{
         </li>
       ))}
       </ul>
-      </ScrollBars>
       )}
 
       <div className='sidebar-bottom'>
@@ -173,7 +165,6 @@ const SideBar = () =>{
         </span> 
       </div>
      {isDMLoading==false ? (null): (
-      <ScrollBars horizontal autoHide={false} style={scrollBarStyle}>
      <ul className='sidebar-list'>
       {DMList.map((item, index) => (
 						<li key={index} onClick={() => {
@@ -184,7 +175,6 @@ const SideBar = () =>{
 						</li>
 					))}
           </ul>
-          </ScrollBars>
           )}
     </div>
 
