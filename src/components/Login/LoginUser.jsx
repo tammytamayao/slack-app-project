@@ -23,31 +23,39 @@ export const LoginUser = () => {
     const [userList,setUserList]=useState(prevUserList);
 
 //Authenticate Log in
-    const login = async () => {
-        setIsLoading(true);
-        
-    const payload = {email: email, password: password};
 
-        try {
-            const response = await client.post('/auth/sign_in', payload);
-            localStorage.setItem('userHeader',JSON.stringify(response.headers));
-            localStorage.setItem('userInfo',JSON.stringify(payload));
-            if(response.request.status===200 && isLoading===false) {
-                localStorage.setItem('isUserActive',JSON.stringify(false));
-                localStorage.setItem('loginStatus',JSON.stringify(response.request.status));
-                console.log('Successfully Logged In');
-                window.location.reload();
+        const login = async () => {
+            setIsLoading(true);
+            
+        const payload = {email: email, password: password};
+        if (email!==""){
+
+            try {
+                const response = await client.post("auth/sign_in", payload);
+                localStorage.setItem('userHeader',JSON.stringify(response.headers));
+                localStorage.setItem('userInfo',JSON.stringify(payload));
+                if(response.request.status===200 && isLoading===false) {
+                    localStorage.setItem('isUserActive',JSON.stringify(false));
+                    localStorage.setItem('loginStatus',JSON.stringify(response.request.status));
+                    console.log('Successfully Logged In');
+                    window.location.reload();
+                    
+                }
             }
-        }
-        catch (error) {
-            console.log(error);
-            setIsLoading(false);
-            setLogInMsg(error);
-        }
-    }
+            catch (error) {
+                console.log(error);
+                setIsLoading(false);
+                setLogInMsg(error);
 
-//Get Users List
+        }
+
+    }
+}
+
+    //Get Users List
     const getUserList = async () => {
+    
+    if (headers!==null){
         const response = await fetch(`${baseURL}/users`,  {
             method: 'GET',
             headers: {...headers}
@@ -67,11 +75,12 @@ export const LoginUser = () => {
             navigate('/DashboardDM');
         }
     }
+}
 
     useEffect(() => {
-        login();
         getUserList();
     }, [headers]);
+
 
     
     return (
