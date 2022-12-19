@@ -1,5 +1,4 @@
 import React,{useState,useContext} from 'react';
-import ScrollBars from 'react-scrollbar';
 import { useNavigate } from 'react-router-dom';
 import DM from '../../components/Asset/DM.svg';
 import Threads from '../../components/Asset/Threads.svg';

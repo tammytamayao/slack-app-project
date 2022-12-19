@@ -4,7 +4,6 @@ import {UserContextHeader, UserContextInfo} from "../context/HeaderContext";
 import {client} from "../config/AxiosConfig";
 import {useParams} from "react-router-dom";
 import UserImg from '../components/Asset/UserImg.png';
-import ScrollBars from 'react-scrollbar';
 import './Messaging.css';
 
 
@@ -46,7 +45,6 @@ export const Messages = (userID, receiverClass) => {
     }, [])
     
     return (
-        <ScrollBars horizontal autoHide={false} style={scrollBarStyle}>
         <div>
             {messages.length > 0
                 ? messages.map((message) => 
@@ -65,6 +63,5 @@ export const Messages = (userID, receiverClass) => {
                 )
                 : <p>Looks like you don't have any messages</p>}
         </div>
-        </ScrollBars>
     )
 }
