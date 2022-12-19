@@ -56,7 +56,7 @@ export const LoginUser = () => {
     const getUserList = async () => {
     
     if (headers!==null){
-        const response = await fetch("http://206.189.91.54/api/v1/users",  {
+        const response = await fetch("https://206.189.91.54/api/v1/users",  {
             method: 'GET',
             headers: {...headers}
         });
