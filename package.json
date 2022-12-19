@@ -1,5 +1,6 @@
 {
-  "homepage": ".",
+  "homepage": "https://tammytamayao.github.io/slack-app-project/",
+  "proxy": "http://localhost:3000",
   "name": "slack-app-project",
   "version": "0.1.0",
   "private": true,
