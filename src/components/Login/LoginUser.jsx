@@ -52,37 +52,33 @@ export const LoginUser = () => {
     }
 }
 
-    //Get Users List
-    const getUserList = async () => {
+useEffect(() => {
+        //Get Users List
+        const getUserList = async () => {
     
-    if (headers!==null){
-        const response = await fetch("https://206.189.91.54/api/v1/users",  {
-            method: 'GET',
-            headers: {...headers}
-        });
-    
-        if(response.status === 200) {
-            const result = await response.json();
-            result.data.forEach((item) => {
-                userList.push({
-                    name: item.name,
-                    id: item.id,
-                    uid: item.uid,
+            if (headers!==null){
+                const response = await fetch("http://206.189.91.54/api/v1/users",  {
+                    method: 'GET',
+                    headers: {...headers}
                 });
-            });
-            setUserList(result.data);
-            localStorage.setItem('userList',JSON.stringify(userList));
-            navigate('/DashboardDM');
+            
+                if(response.status === 200) {
+                    const result = await response.json();
+                    result.data.forEach((item) => {
+                        userList.push({
+                            name: item.name,
+                            id: item.id,
+                            uid: item.uid,
+                        });
+                    });
+                    setUserList(result.data);
+                    localStorage.setItem('userList',JSON.stringify(userList));
+                    navigate('/DashboardDM');
+                }
+            }
         }
-    }
-}
-
-    useEffect(() => {
-        login();
-        getUserList();
-    }, [headers]);
-
-
+    getUserList();
+}, [headers]);
     
     return (
     <div className="login-container-container">
